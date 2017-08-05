@@ -35,12 +35,13 @@ public class GameWindow extends Frame {
     public void loop() {
         while(true) {
             if (lastTimeUpdate == -1) {
-                lastTimeUpdate = System.currentTimeMillis();
+                lastTimeUpdate = System.nanoTime();
             }
-            currentTime = System.currentTimeMillis();
-            if (currentTime - lastTimeUpdate > 17) {
+            currentTime = System.nanoTime();
+            if (currentTime - lastTimeUpdate > 17000000) {
                 run();
                 render();
+                lastTimeUpdate = currentTime;
             }
         }
     }
